@@ -102,6 +102,12 @@ button {
 }
 
 .theme-toggle {
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--muted);
+}
+
+.language-toggle {
   margin-left: auto;
   background: transparent;
   color: var(--ink);
@@ -201,7 +207,8 @@ button:hover {
     align-items: stretch;
   }
 
-  .theme-toggle {
+  .theme-toggle,
+  .language-toggle {
     margin-left: 0;
   }
 
