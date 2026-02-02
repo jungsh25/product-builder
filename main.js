@@ -1,6 +1,8 @@
 const generateBtn = document.getElementById("generateBtn");
+const themeToggleBtn = document.getElementById("themeToggleBtn");
 const lineCountSelect = document.getElementById("lineCount");
 const result = document.getElementById("result");
+const THEME_KEY = "lotto-theme";
 
 const pickOneLine = () => {
   const picks = new Set();
@@ -45,8 +47,27 @@ const renderLines = (lineCount) => {
   });
 };
 
+const getPreferredTheme = () => {
+  const savedTheme = localStorage.getItem(THEME_KEY);
+  if (savedTheme === "dark" || savedTheme === "light") return savedTheme;
+  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+};
+
+const applyTheme = (theme) => {
+  document.body.setAttribute("data-theme", theme);
+  themeToggleBtn.textContent = theme === "dark" ? "White Mode" : "Dark Mode";
+};
+
+themeToggleBtn.addEventListener("click", () => {
+  const currentTheme = document.body.getAttribute("data-theme") || "light";
+  const nextTheme = currentTheme === "dark" ? "light" : "dark";
+  localStorage.setItem(THEME_KEY, nextTheme);
+  applyTheme(nextTheme);
+});
+
 generateBtn.addEventListener("click", () => {
   renderLines(Number(lineCountSelect.value));
 });
 
+applyTheme(getPreferredTheme());
 renderLines(Number(lineCountSelect.value));

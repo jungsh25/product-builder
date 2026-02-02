@@ -3,8 +3,23 @@
   --bg-b: #1f4e5f;
   --panel: rgba(245, 248, 255, 0.92);
   --ink: #11223a;
+  --muted: #385472;
+  --eyebrow: #2b4f75;
+  --line-bg: #edf3fa;
+  --select-bg: #dbe8f7;
   --accent: #ff8a00;
   --accent-2: #ff3d6e;
+}
+
+[data-theme="dark"] {
+  --bg-a: #080c17;
+  --bg-b: #0e223c;
+  --panel: rgba(9, 18, 33, 0.86);
+  --ink: #edf4ff;
+  --muted: #b4c8e7;
+  --eyebrow: #8db3e6;
+  --line-bg: #142944;
+  --select-bg: #203a5c;
 }
 
 * {
@@ -39,7 +54,7 @@ body {
   letter-spacing: 0.2em;
   font-weight: 700;
   font-size: 0.78rem;
-  color: #2b4f75;
+  color: var(--eyebrow);
 }
 
 h1 {
@@ -49,7 +64,7 @@ h1 {
 
 .subtitle {
   margin: 0 0 18px;
-  color: #385472;
+  color: var(--muted);
 }
 
 .controls {
@@ -73,7 +88,8 @@ button {
 
 select {
   padding: 9px 12px;
-  background: #dbe8f7;
+  background: var(--select-bg);
+  color: var(--ink);
   font-weight: 700;
 }
 
@@ -83,6 +99,13 @@ button {
   color: #fff;
   background: linear-gradient(90deg, var(--accent), var(--accent-2));
   cursor: pointer;
+}
+
+.theme-toggle {
+  margin-left: auto;
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--muted);
 }
 
 button:hover {
@@ -100,7 +123,7 @@ button:hover {
   gap: 10px;
   padding: 12px;
   border-radius: 14px;
-  background: #edf3fa;
+  background: var(--line-bg);
   animation: pop 0.36s ease-out both;
 }
 
