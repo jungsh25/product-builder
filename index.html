@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lotto Number Generator</title>
+  <title>Dinner Menu Recommender</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
@@ -11,22 +11,31 @@
 </head>
 <body>
   <main class="app">
-    <p class="eyebrow">LUCKY PICKER</p>
-    <h1>Lotto Number Generator</h1>
-    <p class="subtitle">Pick 6 unique numbers between 1 and 45.</p>
+    <p class="eyebrow">DINNER DECIDER</p>
+    <h1>What Should We Eat Tonight?</h1>
+    <p class="subtitle">Generate tasty dinner ideas by mood and spice level.</p>
     <div class="controls">
-      <label for="lineCount">Lines</label>
-      <select id="lineCount">
-        <option value="1">1</option>
-        <option value="3" selected>3</option>
-        <option value="5">5</option>
+      <label for="mood">Mood</label>
+      <select id="mood">
+        <option value="any" selected>Any</option>
+        <option value="quick">Quick</option>
+        <option value="comfort">Comfort</option>
+        <option value="fresh">Fresh</option>
+        <option value="hearty">Hearty</option>
       </select>
-      <button id="generateBtn" type="button">Generate Numbers</button>
+      <label for="spiceLevel">Spice</label>
+      <select id="spiceLevel">
+        <option value="any" selected>Any</option>
+        <option value="mild">Mild</option>
+        <option value="medium">Medium</option>
+        <option value="hot">Hot</option>
+      </select>
+      <button id="generateBtn" type="button">Recommend Menu</button>
       <button id="themeToggleBtn" class="theme-toggle" type="button" aria-label="Toggle theme">
         Dark Mode
       </button>
     </div>
-    <section id="result" aria-live="polite"></section>
+    <section id="result" aria-live="polite" aria-label="Recommended dinner menus"></section>
   </main>
   <script defer type="text/javascript" src="/main.js"></script>
 </body>

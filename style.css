@@ -1,25 +1,25 @@
 :root {
-  --bg-a: #0f1a2b;
-  --bg-b: #1f4e5f;
-  --panel: rgba(245, 248, 255, 0.92);
-  --ink: #11223a;
-  --muted: #385472;
-  --eyebrow: #2b4f75;
-  --line-bg: #edf3fa;
-  --select-bg: #dbe8f7;
-  --accent: #ff8a00;
-  --accent-2: #ff3d6e;
+  --bg-a: #f75f29;
+  --bg-b: #f8b035;
+  --panel: rgba(255, 250, 243, 0.94);
+  --ink: #2a1a11;
+  --muted: #6f4531;
+  --eyebrow: #8f3319;
+  --line-bg: #ffe9d4;
+  --select-bg: #ffd6b7;
+  --accent: #e53935;
+  --accent-2: #ff7b26;
 }
 
 [data-theme="dark"] {
-  --bg-a: #080c17;
-  --bg-b: #0e223c;
-  --panel: rgba(9, 18, 33, 0.86);
-  --ink: #edf4ff;
-  --muted: #b4c8e7;
-  --eyebrow: #8db3e6;
-  --line-bg: #142944;
-  --select-bg: #203a5c;
+  --bg-a: #1d0d08;
+  --bg-b: #4a1d0f;
+  --panel: rgba(28, 16, 12, 0.9);
+  --ink: #fff1e7;
+  --muted: #ffc7a0;
+  --eyebrow: #ffae75;
+  --line-bg: #48271d;
+  --select-bg: #643527;
 }
 
 * {
@@ -45,7 +45,7 @@ body {
   border-radius: 20px;
   padding: 30px;
   background: var(--panel);
-  box-shadow: 0 24px 70px rgba(4, 16, 34, 0.35);
+  box-shadow: 0 24px 70px rgba(54, 23, 8, 0.35);
   animation: rise 0.6s ease-out;
 }
 
@@ -118,17 +118,18 @@ button:hover {
 }
 
 .line {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 12px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 8px 12px;
+  padding: 14px;
   border-radius: 14px;
   background: var(--line-bg);
   animation: pop 0.36s ease-out both;
 }
 
 .line strong {
-  min-width: 50px;
+  min-width: 74px;
+  font-size: 0.92rem;
 }
 
 .numbers {
@@ -138,34 +139,35 @@ button:hover {
 }
 
 .ball {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
+  min-width: 120px;
+  height: 34px;
+  border-radius: 999px;
+  padding: 0 12px;
   display: grid;
   place-items: center;
   color: #fff;
-  font-weight: 700;
+  font-weight: 600;
   box-shadow: 0 4px 10px rgba(13, 31, 56, 0.2);
 }
 
 .range-1 {
-  background: #f9b331;
+  background: #d84315;
 }
 
 .range-2 {
-  background: #3493de;
+  background: #ef6c00;
 }
 
 .range-3 {
-  background: #ff6464;
+  background: #ff8f00;
 }
 
 .range-4 {
-  background: #73798c;
+  background: #6d4c41;
 }
 
 .range-5 {
-  background: #31ab72;
+  background: #2e7d32;
 }
 
 @keyframes rise {
@@ -195,7 +197,23 @@ button:hover {
     padding: 22px;
   }
 
+  .controls {
+    align-items: stretch;
+  }
+
+  .theme-toggle {
+    margin-left: 0;
+  }
+
   .line strong {
     min-width: 42px;
+  }
+
+  .line {
+    grid-template-columns: 1fr;
+  }
+
+  .ball {
+    min-width: 108px;
   }
 }
