@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dinner Menu Recommender</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="./style.css" rel="stylesheet">
+</head>
+<body>
+  <main class="app">
+    <p class="eyebrow">DINNER DECIDER</p>
+    <h1>What Should We Eat Tonight?</h1>
+    <p class="subtitle">Generate tasty dinner ideas by mood and spice level.</p>
+    <div class="controls">
+      <label for="mood">Mood</label>
+      <select id="mood">
+        <option value="any" selected>Any</option>
+        <option value="quick">Quick</option>
+        <option value="comfort">Comfort</option>
+        <option value="fresh">Fresh</option>
+        <option value="hearty">Hearty</option>
+      </select>
+      <label for="spiceLevel">Spice</label>
+      <select id="spiceLevel">
+        <option value="any" selected>Any</option>
+        <option value="mild">Mild</option>
+        <option value="medium">Medium</option>
+        <option value="hot">Hot</option>
+      </select>
+      <button id="generateBtn" type="button">Recommend Menu</button>
+      <button id="languageToggleBtn" class="language-toggle" type="button" aria-label="Toggle language">
+        한국어
+      </button>
+      <button id="themeToggleBtn" class="theme-toggle" type="button" aria-label="Toggle theme">
+        Dark Mode
+      </button>
+    </div>
+    <section id="result" aria-live="polite" aria-label="Recommended dinner menus"></section>
+    <section class="partner-section" aria-labelledby="partnerHeading">
+      <h2 id="partnerHeading">Partnership Inquiry</h2>
+      <p id="partnerSubtitle" class="partner-subtitle">Send us a short note and we will get back to you.</p>
+      <form
+        id="partnerForm"
+        class="partner-form"
+        action="https://formspree.io/f/xnjzwyze"
+        method="POST"
+      >
+        <label for="partnerName" id="partnerNameLabel">Name</label>
+        <input id="partnerName" name="name" type="text" required />
+
+        <label for="partnerCompany" id="partnerCompanyLabel">Company</label>
+        <input id="partnerCompany" name="company" type="text" required />
+
+        <label for="partnerEmail" id="partnerEmailLabel">Email</label>
+        <input id="partnerEmail" name="email" type="email" required />
+
+        <label for="partnerMessage" id="partnerMessageLabel">Message</label>
+        <textarea id="partnerMessage" name="message" rows="4" required></textarea>
+
+        <input type="hidden" name="_subject" value="Partnership Inquiry" />
+        <button id="partnerSubmitBtn" type="submit">Send Inquiry</button>
+        <p id="partnerStatus" class="partner-status" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <section class="comments-section" aria-labelledby="commentsHeading">
+      <h2 id="commentsHeading">Comments</h2>
+      <div id="disqus_thread"></div>
+      <script>
+        var disqus_config = function () {
+          this.page.url = window.location.origin + window.location.pathname;
+          this.page.identifier = window.location.pathname || "home";
+        };
+
+        (function() {
+          var d = document;
+          var s = d.createElement("script");
+          s.src = "https://product-builder-14.disqus.com/embed.js";
+          s.setAttribute("data-timestamp", +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view comments powered by Disqus.</noscript>
+    </section>
+  </main>
+  <script defer type="text/javascript" src="./main.js"></script>
+</body>
+</html>
