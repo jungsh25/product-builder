@@ -65,6 +65,26 @@
         <p id="partnerStatus" class="partner-status" role="status" aria-live="polite"></p>
       </form>
     </section>
+
+    <section class="comments-section" aria-labelledby="commentsHeading">
+      <h2 id="commentsHeading">Comments</h2>
+      <div id="disqus_thread"></div>
+      <script>
+        var disqus_config = function () {
+          this.page.url = window.location.origin + window.location.pathname;
+          this.page.identifier = window.location.pathname || "home";
+        };
+
+        (function() {
+          var d = document;
+          var s = d.createElement("script");
+          s.src = "https://product-builder-14.disqus.com/embed.js";
+          s.setAttribute("data-timestamp", +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view comments powered by Disqus.</noscript>
+    </section>
   </main>
   <script defer type="text/javascript" src="./main.js"></script>
 </body>

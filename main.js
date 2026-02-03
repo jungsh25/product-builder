@@ -53,6 +53,7 @@ const textByLang = {
     partnerSending: "Sending...",
     partnerSuccess: "Thanks. Your inquiry was sent.",
     partnerError: "Failed to send. Please try again.",
+    commentsHeading: "Comments",
     moodOptions: {
       any: "Any",
       quick: "Quick",
@@ -94,6 +95,7 @@ const textByLang = {
     partnerSending: "전송 중...",
     partnerSuccess: "문의가 정상적으로 접수되었습니다.",
     partnerError: "전송에 실패했어요. 다시 시도해주세요.",
+    commentsHeading: "댓글",
     moodOptions: {
       any: "전체",
       quick: "간단하게",
@@ -177,6 +179,7 @@ const applyLanguage = () => {
   document.getElementById("partnerEmailLabel").textContent = t.partnerEmail;
   document.getElementById("partnerMessageLabel").textContent = t.partnerMessage;
   document.getElementById("partnerSubmitBtn").textContent = t.partnerSubmit;
+  document.getElementById("commentsHeading").textContent = t.commentsHeading;
 
   updateSelectOptions();
   applyTheme(theme);
