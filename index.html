@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
-  <link href='/style.css' rel='stylesheet'>
+  <link href="./style.css" rel="stylesheet">
 </head>
 <body>
   <main class="app">
@@ -39,7 +39,33 @@
       </button>
     </div>
     <section id="result" aria-live="polite" aria-label="Recommended dinner menus"></section>
+    <section class="partner-section" aria-labelledby="partnerHeading">
+      <h2 id="partnerHeading">Partnership Inquiry</h2>
+      <p id="partnerSubtitle" class="partner-subtitle">Send us a short note and we will get back to you.</p>
+      <form
+        id="partnerForm"
+        class="partner-form"
+        action="https://formspree.io/f/xnjzwyze"
+        method="POST"
+      >
+        <label for="partnerName" id="partnerNameLabel">Name</label>
+        <input id="partnerName" name="name" type="text" required />
+
+        <label for="partnerCompany" id="partnerCompanyLabel">Company</label>
+        <input id="partnerCompany" name="company" type="text" required />
+
+        <label for="partnerEmail" id="partnerEmailLabel">Email</label>
+        <input id="partnerEmail" name="email" type="email" required />
+
+        <label for="partnerMessage" id="partnerMessageLabel">Message</label>
+        <textarea id="partnerMessage" name="message" rows="4" required></textarea>
+
+        <input type="hidden" name="_subject" value="Partnership Inquiry" />
+        <button id="partnerSubmitBtn" type="submit">Send Inquiry</button>
+        <p id="partnerStatus" class="partner-status" role="status" aria-live="polite"></p>
+      </form>
+    </section>
   </main>
-  <script defer type="text/javascript" src="/main.js"></script>
+  <script defer type="text/javascript" src="./main.js"></script>
 </body>
 </html>

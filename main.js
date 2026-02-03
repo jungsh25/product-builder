@@ -4,6 +4,8 @@ const languageToggleBtn = document.getElementById("languageToggleBtn");
 const moodSelect = document.getElementById("mood");
 const spiceLevelSelect = document.getElementById("spiceLevel");
 const result = document.getElementById("result");
+const partnerForm = document.getElementById("partnerForm");
+const partnerStatus = document.getElementById("partnerStatus");
 
 const THEME_KEY = "dinner-theme";
 const LANGUAGE_KEY = "dinner-language";
@@ -41,6 +43,16 @@ const textByLang = {
     noResult1: "No menu found",
     noResult2: "Try Any mood/spice",
     spiceWord: "spice",
+    partnerHeading: "Partnership Inquiry",
+    partnerSubtitle: "Send us a short note and we will get back to you.",
+    partnerName: "Name",
+    partnerCompany: "Company",
+    partnerEmail: "Email",
+    partnerMessage: "Message",
+    partnerSubmit: "Send Inquiry",
+    partnerSending: "Sending...",
+    partnerSuccess: "Thanks. Your inquiry was sent.",
+    partnerError: "Failed to send. Please try again.",
     moodOptions: {
       any: "Any",
       quick: "Quick",
@@ -72,6 +84,16 @@ const textByLang = {
     noResult1: "조건에 맞는 메뉴가 없어요",
     noResult2: "분위기/맵기를 전체로 바꿔보세요",
     spiceWord: "맵기",
+    partnerHeading: "제휴 문의",
+    partnerSubtitle: "간단히 남겨주시면 빠르게 회신드릴게요.",
+    partnerName: "이름",
+    partnerCompany: "회사명",
+    partnerEmail: "이메일",
+    partnerMessage: "문의 내용",
+    partnerSubmit: "문의 보내기",
+    partnerSending: "전송 중...",
+    partnerSuccess: "문의가 정상적으로 접수되었습니다.",
+    partnerError: "전송에 실패했어요. 다시 시도해주세요.",
     moodOptions: {
       any: "전체",
       quick: "간단하게",
@@ -148,6 +170,13 @@ const applyLanguage = () => {
   generateBtn.textContent = t.generateBtn;
   languageToggleBtn.textContent = t.languageToggle;
   result.setAttribute("aria-label", t.resultLabel);
+  document.getElementById("partnerHeading").textContent = t.partnerHeading;
+  document.getElementById("partnerSubtitle").textContent = t.partnerSubtitle;
+  document.getElementById("partnerNameLabel").textContent = t.partnerName;
+  document.getElementById("partnerCompanyLabel").textContent = t.partnerCompany;
+  document.getElementById("partnerEmailLabel").textContent = t.partnerEmail;
+  document.getElementById("partnerMessageLabel").textContent = t.partnerMessage;
+  document.getElementById("partnerSubmitBtn").textContent = t.partnerSubmit;
 
   updateSelectOptions();
   applyTheme(theme);
@@ -214,6 +243,29 @@ languageToggleBtn.addEventListener("click", () => {
 });
 
 generateBtn.addEventListener("click", renderMenus);
+
+partnerForm.addEventListener("submit", async (event) => {
+  event.preventDefault();
+  const t = textByLang[currentLanguage];
+  const submitBtn = document.getElementById("partnerSubmitBtn");
+  submitBtn.disabled = true;
+  partnerStatus.textContent = t.partnerSending;
+
+  try {
+    const response = await fetch(partnerForm.action, {
+      method: "POST",
+      body: new FormData(partnerForm),
+      headers: { Accept: "application/json" }
+    });
+    if (!response.ok) throw new Error("Request failed");
+    partnerForm.reset();
+    partnerStatus.textContent = t.partnerSuccess;
+  } catch (error) {
+    partnerStatus.textContent = t.partnerError;
+  } finally {
+    submitBtn.disabled = false;
+  }
+});
 
 applyTheme(getPreferredTheme());
 applyLanguage();
